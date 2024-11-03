@@ -7,9 +7,9 @@ function App() {
     return (
         <Router basename='/Register-App'>
             <Routes>
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path='' element={<Dashboard/>}/>
+                <Route path='/register' element={<Register />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/' element={<Dashboard/>}/>
                 {/* Add more routes for Home, Login, etc. */}
             </Routes>
         </Router>
