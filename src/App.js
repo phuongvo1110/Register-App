@@ -5,7 +5,7 @@ import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 function App() {
     return (
-        <Router>
+        <Router basename='/Register-App'>
             <Routes>
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
