@@ -29,13 +29,13 @@ function Dashboard() {
                                             className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
                                             aria-current="page"
                                         >
-                                            Dashboard
+                                            Login
                                         </a>
                                         <a
                                             href="#"
                                             className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                                         >
-                                            Team
+                                            Register
                                         </a>
                                         <a
                                             href="#"
@@ -124,22 +124,22 @@ function Dashboard() {
                                         >
                                             {/* Active: "bg-gray-100 outline-none", Not Active: "" */}
                                             <a
-                                                href="#"
+                                                href="/Register-App/#/login"
                                                 className="block px-4 py-2 text-sm text-gray-700"
                                                 role="menuitem"
                                                 tabIndex={-1}
                                                 id="user-menu-item-0"
                                             >
-                                                Your Profile
+                                                Login
                                             </a>
                                             <a
-                                                href="#"
+                                                href="/Register-App/#/register"
                                                 className="block px-4 py-2 text-sm text-gray-700"
                                                 role="menuitem"
                                                 tabIndex={-1}
                                                 id="user-menu-item-1"
                                             >
-                                                Settings
+                                                Register
                                             </a>
                                             <a
                                                 href="#"
