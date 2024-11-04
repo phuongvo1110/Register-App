@@ -7,7 +7,7 @@ import { BrowserRouter, HashRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <BrowserRouter basename="/Register-App" hashType="hashbang">
+        <BrowserRouter basename="/Register-App">
             <App />
         </BrowserRouter>
     </React.StrictMode>
