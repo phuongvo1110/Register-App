@@ -1,4 +1,4 @@
-const Dashboard = () => {
+function Dashboard() {
     return (
         <>
             {/*
