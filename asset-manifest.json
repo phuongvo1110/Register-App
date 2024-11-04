@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Register-App/static/css/main.d7fa63aa.css",
-    "main.js": "/Register-App/static/js/main.280e47a2.js",
+    "main.js": "/Register-App/static/js/main.eb9b6528.js",
     "static/js/453.01a7f422.chunk.js": "/Register-App/static/js/453.01a7f422.chunk.js",
     "index.html": "/Register-App/index.html",
     "main.d7fa63aa.css.map": "/Register-App/static/css/main.d7fa63aa.css.map",
-    "main.280e47a2.js.map": "/Register-App/static/js/main.280e47a2.js.map",
+    "main.eb9b6528.js.map": "/Register-App/static/js/main.eb9b6528.js.map",
     "453.01a7f422.chunk.js.map": "/Register-App/static/js/453.01a7f422.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d7fa63aa.css",
-    "static/js/main.280e47a2.js"
+    "static/js/main.eb9b6528.js"
   ]
 }
