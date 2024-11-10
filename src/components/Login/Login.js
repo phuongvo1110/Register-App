@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 function Login() {
+    const { loginUser } = useContext(UserContext);
     const {
         register,
         handleSubmit,
@@ -16,6 +18,8 @@ function Login() {
                 "https://localhost:7242/user/login",
                 data
             );
+            console.log(response.data);
+            loginUser(response.data);
             alert("Login successful!");
             navigate("/");
         } catch (error) {

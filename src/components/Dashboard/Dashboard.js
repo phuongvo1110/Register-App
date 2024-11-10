@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import UserContext from "../../context/UserContext";
+
 function Dashboard() {
+    const { user, token, logoutUser } = useContext(UserContext);
+    console.log(user);
     return (
         <>
             {/*
@@ -105,16 +110,6 @@ function Dashboard() {
                                                 />
                                             </button>
                                         </div>
-                                        {/*
-          Dropdown menu, show/hide based on menu state.
-
-          Entering: "transition ease-out duration-100"
-            From: "transform opacity-0 scale-95"
-            To: "transform opacity-100 scale-100"
-          Leaving: "transition ease-in duration-75"
-            From: "transform opacity-100 scale-100"
-            To: "transform opacity-0 scale-95"
-        */}
                                         <div
                                             className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                                             role="menu"
@@ -122,34 +117,50 @@ function Dashboard() {
                                             aria-labelledby="user-menu-button"
                                             tabIndex={-1}
                                         >
-                                            {/* Active: "bg-gray-100 outline-none", Not Active: "" */}
-                                            <a
-                                                href="/Register-App/#/login"
-                                                className="block px-4 py-2 text-sm text-gray-700"
-                                                role="menuitem"
-                                                tabIndex={-1}
-                                                id="user-menu-item-0"
-                                            >
-                                                Login
-                                            </a>
-                                            <a
-                                                href="/Register-App/#/register"
-                                                className="block px-4 py-2 text-sm text-gray-700"
-                                                role="menuitem"
-                                                tabIndex={-1}
-                                                id="user-menu-item-1"
-                                            >
-                                                Register
-                                            </a>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 text-sm text-gray-700"
-                                                role="menuitem"
-                                                tabIndex={-1}
-                                                id="user-menu-item-2"
-                                            >
-                                                Sign out
-                                            </a>
+                                            {user ? (
+                                                <>
+                                                    <a
+                                                        href="/Register-App/#/profile"
+                                                        className="block px-4 py-2 text-sm text-gray-700"
+                                                        role="menuitem"
+                                                        tabIndex={-1}
+                                                        id="user-menu-item-0"
+                                                    >
+                                                        {user.name}
+                                                    </a>
+
+                                                    <button
+                                                        onClick={logoutUser}
+                                                        className="block px-4 py-2 text-sm text-gray-700"
+                                                        role="menuitem"
+                                                        tabIndex={-1}
+                                                        id="user-menu-item-2"
+                                                    >
+                                                        Sign out
+                                                    </button>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <a
+                                                        href="/Register-App/#/login"
+                                                        className="block px-4 py-2 text-sm text-gray-700"
+                                                        role="menuitem"
+                                                        tabIndex={-1}
+                                                        id="user-menu-item-0"
+                                                    >
+                                                        Login
+                                                    </a>
+                                                    <a
+                                                        href="/Register-App/#/register"
+                                                        className="block px-4 py-2 text-sm text-gray-700"
+                                                        role="menuitem"
+                                                        tabIndex={-1}
+                                                        id="user-menu-item-1"
+                                                    >
+                                                        Register
+                                                    </a>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -318,6 +329,6 @@ function Dashboard() {
             </div>
         </>
     );
-};
+}
 
 export default Dashboard;
