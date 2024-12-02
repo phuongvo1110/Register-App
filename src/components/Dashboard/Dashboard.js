@@ -3,17 +3,11 @@ import UserContext from "../../context/UserContext";
 
 function Dashboard() {
     const { user, token, logoutUser } = useContext(UserContext);
-    console.log(user);
+    console.log('Token', token);
+    const userAccount = user.user;
+    console.log('User Account', userAccount);
     return (
         <>
-            {/*
-  This example requires updating your template:
-
-  ```
-  <html class="h-full bg-gray-100">
-  <body class="h-full">
-  ```
-*/}
             <div className="min-h-full">
                 <nav className="bg-gray-800">
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -117,7 +111,7 @@ function Dashboard() {
                                             aria-labelledby="user-menu-button"
                                             tabIndex={-1}
                                         >
-                                            {user ? (
+                                            {userAccount ? (
                                                 <>
                                                     <a
                                                         href="/Register-App/#/profile"
@@ -126,7 +120,7 @@ function Dashboard() {
                                                         tabIndex={-1}
                                                         id="user-menu-item-0"
                                                     >
-                                                        {user.name}
+                                                        {userAccount.username}
                                                     </a>
 
                                                     <button

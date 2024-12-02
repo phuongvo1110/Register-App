@@ -15,16 +15,15 @@ function Login() {
     const onSubmit = async (data) => {
         try {
             const response = await axios.post(
-                "https://localhost:7242/user/login",
+                "http://localhost:8083/api/v1/session/signin",
                 data
             );
             console.log(response.data);
-            loginUser(response.data);
-            alert("Login successful!");
-            navigate("/");
+            loginUser(response.data.data);
+            navigate("/dashboard");
         } catch (error) {
             if (error) {
-                setErrorMessage(error.response.data);
+                setErrorMessage(error.response);
                 console.log(errorMessage);
             } else {
                 alert("An error occurred. Please try again.");

@@ -4,11 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Register() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        watch,
+    } = useForm();
     const navigate = useNavigate();
+
+    // Watch the value of the password field
+    const password = watch("password");
+
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post('https://localhost:7242/user/register', data);
+            const response = await axios.post('http://localhost:8083/api/v1/session/signup', data);
             navigate('/login');
         } catch (error) {
             if (error.response) {
@@ -45,20 +54,20 @@ function Register() {
                             </div>
                             <div>
                                 <label
-                                    htmlFor="email"
+                                    htmlFor="username"
                                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                 >
-                                    Your name
+                                    Username
                                 </label>
                                 <input
                                     type="text"
-                                    name="name"
-                                    id="nam"
-                                    {...register("name", { required: "Name is required" })}
+                                    name="username"
+                                    id="username"
+                                    {...register("username", { required: "Name is required" })}
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Your Name"
+                                    placeholder="Username"
                                 />
-                                {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
+                                {errors.username && <p className="text-red-500 text-xs">{errors.username.message}</p>}
                             </div>
                             <div>
                                 <label
@@ -86,13 +95,19 @@ function Register() {
                                 </label>
                                 <input
                                     type="password"
-                                    name="confirmPassword"
+                                    name="confirm_password"
                                     id="confirm-password"
-                                    {...register("confirmPassword", { required: "Please confirm your password" })}
+                                    {...register("confirm_password", {
+                                        required: "Please confirm your password",
+                                        validate: (value) =>
+                                            value === password || "Passwords do not match",
+                                    })}
                                     placeholder="••••••••"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 />
-                                {errors.confirmPassword && <p className="text-red-500 text-xs">{errors.confirmPassword.message}</p>}
+                                {errors.confirm_password && (
+                                    <p className="text-red-500 text-xs">{errors.confirm_password.message}</p>
+                                )}
                             </div>
                             <div className="flex items-start">
                                 <div className="flex items-center h-5">
@@ -141,6 +156,6 @@ function Register() {
             </div>
         </section>
     );
-};
+}
 
 export default Register;
