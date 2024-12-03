@@ -4,8 +4,6 @@ import UserContext from "../../context/UserContext";
 function Dashboard() {
     const { user, token, logoutUser } = useContext(UserContext);
     console.log('Token', token);
-    const userAccount = user.user;
-    console.log('User Account', userAccount);
     return (
         <>
             <div className="min-h-full">
@@ -111,7 +109,7 @@ function Dashboard() {
                                             aria-labelledby="user-menu-button"
                                             tabIndex={-1}
                                         >
-                                            {userAccount ? (
+                                            {user?.user ? (
                                                 <>
                                                     <a
                                                         href="/Register-App/#/profile"
@@ -120,7 +118,7 @@ function Dashboard() {
                                                         tabIndex={-1}
                                                         id="user-menu-item-0"
                                                     >
-                                                        {userAccount.username}
+                                                        {user.user.username}
                                                     </a>
 
                                                     <button
@@ -136,7 +134,7 @@ function Dashboard() {
                                             ) : (
                                                 <>
                                                     <a
-                                                        href="/Register-App/#/login"
+                                                        href="/#login"
                                                         className="block px-4 py-2 text-sm text-gray-700"
                                                         role="menuitem"
                                                         tabIndex={-1}
@@ -145,7 +143,7 @@ function Dashboard() {
                                                         Login
                                                     </a>
                                                     <a
-                                                        href="/Register-App/#/register"
+                                                        href="/#register"
                                                         className="block px-4 py-2 text-sm text-gray-700"
                                                         role="menuitem"
                                                         tabIndex={-1}

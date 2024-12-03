@@ -19,7 +19,11 @@ export const UserProvider = ({ children }) => {
         setUser(data);
         setToken(data.access_token);
     };
-
+    const loginOAuth = (data) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        setUser(data);
+        setToken(data.access_token);
+    }
     const logoutUser = async () => {
         try {
             const response = await axios({
@@ -100,7 +104,7 @@ export const UserProvider = ({ children }) => {
 
     return (
         <UserContext.Provider
-            value={{ user, token, loginUser, logoutUser, fetchWithAuth }}
+            value={{ user, token, loginUser,loginOAuth, logoutUser, fetchWithAuth }}
         >
             {children}
         </UserContext.Provider>
